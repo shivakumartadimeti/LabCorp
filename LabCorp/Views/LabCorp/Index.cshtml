@@ -1,0 +1,97 @@
+﻿@model IEnumerable<LabCorp.Models.EmployeeType>
+@using LabCorp.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LabCorp Employee Details</title>
+    <script type="text/javascript">
+        function UpdateWorkDays(id) {
+            alert(id);
+        }
+    </script>
+</head>
+<body>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofJoining)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkingDays)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number_Of_Vacation_Accumulated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VacationsTaken)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in ViewData["EmployeeDetails"] as IList<EmployeeType>) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateofJoining)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkingDays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number_Of_Vacation_Accumulated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VacationsTaken)
+        </td>
+        <td>
+            @Html.ActionLink("Work", "UpdateWorkDetails", new { id = item.Id }) |
+            @Html.ActionLink("Take Vacation", "UpdateVacationDetails", new { id = item.Id })
+        </td>
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>
